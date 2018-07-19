@@ -1,15 +1,24 @@
-input {width:60px; height:40px;}
+﻿
+Input {width:60px; height:40px;}
 .big_button {width:200px; height:40px;}
-#submit {width:100px; height:40px;}
-.alert {color:red; font-weight:900; font-variant:small-caps; text-align:center;}
-div {margin-left:auto; margin-right:auto; background-color:#EAF1FB; padding:20px; border:1px black solid;}
-h2,h3 {text-align:center;}
-label {display: block; text-align:right;}
-.right {text-align:right;}
-.center {text-align:center;}
-hr {border:0; height:1px;
-    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-    background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-    background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-    background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+
+
+
+
+            #submit {width:100px; height:40px;}
+            .alert {color:red; font-weight: 900; font-variant:small-caps; text-align:center;}
+            div {margin-left:auto; margin-right:auto; background-color: #EAF1FB; padding: 20px; border: 1px black solid;}
+            h2, h3 {text-align:center;}
+            label {display: block; text-align:right;}
+            .right {text-align:right;}
+		.center {text-align:center;}
+           hr {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+   
 }
+
