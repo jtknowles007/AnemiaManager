@@ -2,16 +2,20 @@
 ### Initiation of Epogen
 1. If patient has never been on erythropoietin-stimulating agent, initiate EPO when Hgb <10.1 g/dl
 2. Start EPO subcutaneously once a week as follows:
+
 |Hgb          |Units              |
 | ------------|-------------------|
 |<8.0g/dl     |300 Units per Kg dry weight|
 |8.0 - 8.9g/dl|200 Units per Kg dry weight|
 |9.0 - 9.7g/dl|100 Units per Kg dry weight|
 9.8 - 10.0g/dl|50 Units per Kg dry weight|
+
 3. If patients transfer from hemodialysis:
+
 |Hgb          |Units              |
 | -----------|--------------------|
 |10 - 11g/dl|Decrease present dose by 70% and obtain Hgb with admission labs|
+
 ### Titrate dose to achieve target hemoglobin of 10 - 11g/dl
 ### Other considerations
 1. Dose changes to be made with monthly labs.
