@@ -5,18 +5,32 @@
 
 |Hgb          |Units              |
 | ------------|-------------------|
-|<8.0g/dl     |300 Units per Kg dry weight|
-|8.0 - 8.9g/dl|200 Units per Kg dry weight|
-|9.0 - 9.7g/dl|100 Units per Kg dry weight|
-9.8 - 10.0g/dl|50 Units per Kg dry weight|
+|<8.0 g/dl     |300 Units per Kg dry weight|
+|8.0 - 8.9 g/dl|200 Units per Kg dry weight|
+|9.0 - 9.7 g/dl|100 Units per Kg dry weight|
+9.8 - 10.0 g/dl|50 Units per Kg dry weight|
 
 3. If patients transfer from hemodialysis:
 
-|Hgb          |Units              |
+|Hgb          |Dosage Change              |
 | -----------|--------------------|
-|10 - 11g/dl|Decrease present dose by 70% and obtain Hgb with admission labs|
+|10 - 11 g/dl|Decrease present dose by 70% and obtain hemoglobin with admission labs|
 
-### Titrate dose to achieve target hemoglobin of 10 - 11g/dl
+### Titrate dose to achieve target hemoglobin of 10 - 11 g/dl
+
+|Hgb        |Dosage Change|
+|---|---|
+|<= 9.5 g/dl|Increase dose by 50% and contact physician for further order|
+|9.5 - 9.9 g/dl|Increase dose by 25%|
+|10.0 - 10.3 g/dl|Increase dose by 10%|
+|10.4 - 10.7 g/dl|No change in dose.  See 1 below|
+|10.8 - 11.1 g/dl|Decrease dose by 10%|
+|11.2 - 11.4 g/dl|Decrease dose by 25%|
+|>= 11.5 g/dl|Discontinue and recheck hemoglobin in two weeks, then monthly.  See 2 below|
+
+1. If patient has a hemoglobin increase or decrease of 1.5 g/dl or more in one month, modify EPO dose by 10%.
+2. After discontinuation, when hemoglobin <= 10.6 g/dl, restart EPO at 25% of last dose.  If patient has been off EPO >= 2 months, use initiation scale.
+
 ### Other considerations
 1. Dose changes to be made with monthly labs.
 2. Doses >120,000 Units per month, document cause of hypo response in progress record.  Evaluate patient for infection, inflammation, iron deficiency, malignancy, dialysis adequacy, protein malnutrition, vitamin deficiency.  EPO dose not to exceed 400,000 Units per month.
