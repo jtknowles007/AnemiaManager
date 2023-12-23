@@ -1,182 +1,133 @@
 <?php
-/****************************************************************************************
+/*************************************************************************
 *EPO Algorithm
-*@category          EPO Titration Calculator
+*@category          EPO Initiation Calculator
 *@package           Irvington Clinic EPO Calculator
 *@author             John T. Knowles, RN john.knowles@fmc-na.com
 *@copyright         2014 John T. Knowles, RN
 *@source             FMC Wabash Valley Home #4236 Anemia Algorithm
 *@version           1.0
-*****************************************************************************************/
+**************************************************************************/
 ?>
 <html>
     <head>
-        <title>EPO Titration Calculator</title>
+        <title>EPO Initiation Calculator</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-        <link rel="stylesheet" type="text/css" href="mystyle.css">  
+        <link rel="stylesheet" type="text/css" href="mystyle.css">
+        <script language="JavaScript">
+        <!--
+
+            function enable_text(status)
+                {
+                var row = document.getElementById("epo_row");
+                 if (row.style.display == '') row.style.display = 'none';
+                else row.style.display = '';
+                }
+            //-->
+            </script>
     </head>
-    <body>
+    <body onload="enable_text(false);">
     <div>
     <h2>Anemia Management Algorithm</h2>
-    <h3>EPO Titration Calculator</h3>
+    <h3>EPO Initiation Calculator</h3>
     <hr>
-        <form method="post" action="">
+        <form method="post" action="" name="f1">
         <!--Gather requested data from user-->
             <table>
-                <tr><td width="200"><label for="hgb_current">Hgb:</label></td><td width="200"><input type="number" step=0.1 name="hgb_current">&nbsp;g/dl</td></tr>
-                <tr><td><label for="epo_current">Current&nbsp;EPO&nbsp;dose:</label></td><td><input type="number" step=0.1 name="epo_current">&nbsp;Units</td></tr>
+                <tr><td width="200"><label for="hgb_current">Hgb:</label></td><td width="200"><input type="number"   step=0.1 name="hgb_current">&nbsp;g/dl</td></tr>
+                <tr><td><label for="wt_kg">Weight:</label></td><td><input type="number" name="wt_kg" step=0.1>&nbsp;kg</td></tr>
+                <tr><td><label for="hemoxfer">Hemo Transfer:</label></td><td><input type="checkbox" name="hemoxfer" value="1" onclick="enable_text(this.checked)"></td></tr>
+                <tr id="epo_row"><td><Label for="epo_hemo" >Weekly Hemo EPO Dose:</labe></td><td><input type="number" name="epo_hemo" >&nbsp;Units</td></tr>
                 <tr><td></td><td><input type="submit" name="submit" id="submit" value="Calculate"></td></tr>
             </table>
         </form>
-        <p class="right"><hr width = "100%"><p>
+        <p><hr width = "100%"><p>
 <?php
 
         //Get data from Form
         $hgb_current = ( $_POST['hgb_current']);
-        $epo_current = ($_POST['epo_current']);
+        $wt_kg = ($_POST['wt_kg']);
+        $hemoxfer = ($_POST['hemoxfer']);
+        $epo_hemo = ($_POST['epo_hemo']);
         
         
-        //Is Hgb less than or equal to 9.5 AND not 0?
-	    if ($hgb_current <= 9.5 && $hgb_current !=0)
-	        {
-	        $epo_new = ($epo_current*1.5);
-	        $epo_round = ((int) ($epo_new/1000))*1000;
-	            if ($epo_round ==$epo_current)
-	                {
-	                $epo_round=((int)(($epo_new+500)/1000))*1000;
-	                }
-	            else
-	                {
-	                $epo_round=$epo_round;
-	                }
+        //Is Hgb less than or equal to 8.0 AND not 0?
+	    if ($hgb_current < 8.0 && $hgb_current !=0)
+	    {
+        $epo_new = $wt_kg*300;
+        $epo_new = ((int) ($epo_new/1000))*1000;
 	    echo "Hgb: <b>$hgb_current</b>&nbsp;g/dl.<p>";
-	    echo "Current EPO dose: <b>$epo_current</b>&nbsp;Units.<p>";
-	    echo "New EPO dose: <b>$epo_round</b>&nbsp;Units.<p><p class='alert'><img src='alert.png' height='24px' width='24px'><br>Contact MD for further orders.<p>";
+	    echo "Wt: <b>$wt_kg</b>&nbsp;kg.<p>";
+	    echo "Initial weekly EPO dose: <b>$epo_new</b>&nbsp;Units.";
 	    }
 	    
-	   //Is Hgb between 9.6 and 9.9? 
-	    elseif ($hgb_current >9.5 && $hgb_current <10.0)
+	   //Is Hgb between 8.0 and 8.9? 
+	    elseif ($hgb_current >=8 && $hgb_current <=8.9)
 	    {
-	    $epo_new = ($epo_current*1.25);
-	    $epo_round = ((int) ($epo_new/1000))*1000;
-	        if ($epo_round ==$epo_current)
-	            {
-	            $epo_round=((int)(($epo_new+1000)/1000))*1000;
-	            }
-	        else
-	            {
-	            $epo_round=$epo_round;
-	            }
-        echo "Hgb: <b>$hgb_current</b>&nbsp;g/dl.<p>";
-	    echo "Current EPO dose: <b>$epo_current</b>&nbsp;Units.<p>";
-	        if ($epo_round==0)
-	            {
-	            echo "New EPO dose: <b>DISCONTINUE EPO.</b><p><p class='alert'><img src='alert.png' height='24px' width='24px'><br>Recheck Hgb in 2 weeks.<p>";
-	            }
-	        else
-	            {
-	            echo "New EPO dose: <b>$epo_round</b>&nbsp;Units.<p>";
-	            }
-
+        $epo_new = $wt_kg*200;
+        $epo_new = ((int) ($epo_new/1000))*1000;
+	    echo "Hgb: <b>$hgb_current</b>&nbsp;g/dl.<p>";
+	    echo "Wt: <b>$wt_kg</b>&nbsp;kg.<p>";
+	    echo "Initial weekly EPO dose: <b>$epo_new</b>&nbsp;Units.";
 	    }
 	    
-	    //Is Hgb between 10.0 and 10.3?
-	    elseif ($hgb_current >9.9 && $hgb_current <10.4)
+	    //Is Hgb between 9.0 and 9.7?
+	    elseif ($hgb_current >=9.0 && $hgb_current <=9.7)
 	    {
-	    $epo_new = ($epo_current*1.10);
-	    $epo_round = ((int) ($epo_new/1000))*1000;
-	        if ($epo_round ==$epo_current)
-	            {
-	            $epo_round=((int)(($epo_new+1000)/1000))*1000;
-	            }
-	        else
-	            {
-	            $epo_round=$epo_round;
-	            }
+        $epo_new = $wt_kg*100;
+        $epo_new = ((int) ($epo_new/1000))*1000;
 	    echo "Hgb: <b>$hgb_current</b>&nbsp;g/dl.<p>";
-	    echo "Current EPO dose: <b>$epo_current</b>&nbsp;Units.<p>";
-	        if ($epo_round==0)
-	            {
-	            echo "New EPO dose: <b>DISCONTINUE EPO.</b><p><p class='alert'><img src='alert.png' height='24px' width='24px'><br>Recheck Hgb in 2 weeks.<p>";
-	            }
-	        else
-	            {
-	            echo "New EPO dose: <b>$epo_round</b>&nbsp;Units.<p>";
-	            }
+	    echo "Wt: <b>$wt_kg</b>&nbsp;kg.<p>";
+	    echo "Initial weekly EPO dose: <b>$epo_new</b>&nbsp;Units.";
 	    }
 	 
-	    //Is Hgb bewteen 10.4 and 10.7?
-	    elseif ($hgb_current >10.3 && $hgb_current <10.8)
+	    //Is Hgb bewteen 9.8 and 9.9?
+	    elseif ($hgb_current >=9.8 && $hgb_current <10.0)
 	    {
+        $epo_new = $wt_kg*50;
+        $epo_new = ((int) ($epo_new/1000))*1000;
 	    echo "Hgb: <b>$hgb_current</b>&nbsp;g/dl.<p>";
-	    echo "Current EPO dose: <b>$epo_current</b>&nbsp;Units.<p>";	
-	    echo "New EPO dose: <b>NO CHANGE<p>";
+	    echo "Wt: <b>$wt_kg</b>&nbsp;kg.<p>";
+	    echo "Initial weekly EPO dose: <b>$epo_new</b>&nbsp;Units.";
 	    }
 	    
-	    //Is Hgb between 10.8 and 11.1?
-	    elseif ($hgb_current >10.7 && $hgb_current <11.2)
+	    
+	    //Is Hgb between 10.0 and 11.0?  Is Pt a hemo transfer
+	    elseif ($hgb_current >=10.0 && $hgb_current <=11.0)
 	    {
-	    $epo_new = ($epo_current*0.9);
-	    $epo_round = ((int) ($epo_new/1000))*1000;
-	        if ($epo_round ==$epo_current)
-	            {
-	            $epo_round=((int)(($epo_new+1000)/1000))*1000;
-	            }
-	        else
-	            {
-	            $epo_round=$epo_round;
-	            }
-        echo "Hgb: <b>$hgb_current</b>&nbsp;g/dl.<p>";
-	    echo "Current EPO dose: <b>$epo_current</b>&nbsp;Units.<p>";
-	        if ($epo_round==0)
-	            {
-	            echo "New EPO dose: <b>DISCONTINUE EPO.</b><p><p class='alert'><img src='alert.png' height='24px' width='24px'><br>Recheck Hgb in 2 weeks.<p>";
-	            }
-	        else
-	            {
-	            echo "New EPO dose: <b>$epo_round</b>&nbsp;Units.<p>";
-	            }	
+	    if ($hemoxfer==1)
+	        {
+	        $epo_new = $epo_hemo*0.70; 
+            $epo_new =  ((int) ($epo_new/1000))*1000;
+            echo "Hgb: <b>$hgb_current</b>&nbsp;g/dl.<p>";
+	        echo "Wt: <b>$wt_kg</b>&nbsp;kg.<p>";
+	        echo "Weekly Hemo EPO dose:<b>$epo_hemo</b>&nbsp;Units.<br>";
+	        echo "Weekly Home EPO dose:<b>$epo_new</b>&nbsp;Units.";
+	        
+	        }
+        else 
+            {
+            echo "Hgb: <b>$hgb_current</b>&nbsp;g/dl.<p>";
+	        echo "Wt: <b>$wt_kg</b>&nbsp;kg.<p>";
+	        echo "Initial weekly EPO dose: <b>EPO NOT INDICATED</b>";
+
+            }
 	    }
 	    
-	    //Is Hgb between 11.2 and 11.4?
-	    elseif ($hgb_current >11.1 && $hgb_current <11.5)
+	    //Is Hgb greater than 11
+	    elseif ($hgb_current >=11.1)
 	    {
-	    $epo_new = ($epo_current*0.75);
-	    $epo_round = ((int) ($epo_new/1000))*1000;
-	        if ($epo_round ==$epo_current)
-	            {
-	            $epo_round=((int)(($epo_new+1000)/1000))*1000;
-	            }
-	        else
-	            {
-	            $epo_round=$epo_round;
-	            }
-	    echo "Hgb: <b>$hgb_current</b>&nbsp;g/dl.<p>";
-	    echo "Current EPO dose: <b>$epo_current</b>&nbsp;Units.<p>";
-	        if ($epo_round==0)
-	            {
-	            echo "New EPO dose: <b>DISCONTINUE EPO.</b><p><p class='alert'><img src='alert.png' height='24px' width='24px'><br>Recheck Hgb in 2 weeks.<p>";
-	            }
-	        else
-	            {
-	            echo "New EPO dose: <b>$epo_round</b>&nbsp;Units.<p>";
-	            }
-	    }
+            echo "Hgb: <b>$hgb_current</b>&nbsp;g/dl.<p>";
+	        echo "Wt: <b>$wt_kg</b>&nbsp;kg.<p>";
+	        echo "Initial weekly EPO dose: <b>EPO NOT INDICATED</b>";
+	     }
 	    
-	    //Is Hgb greater than or equal to 11.5 AND not 0?
-	    elseif ($hgb_current>=11.5 && $hgb_current !=0)
-	    {
-	    echo "Hgb: <b>$hgb_current</b>&nbsp;g/dl.<p>";
-	    echo "Current EPO dose: <b>$epo_current</b>&nbsp;Units.<p>";
-	    echo "New EPO dose: <b>DISCONTINUE EPO.</b><p><p class='alert'><img src='alert.png' height='24px' width='24px'><br>Recheck Hgb in 2 weeks.<p>";
-	    }
-	    
-	    //No data entered yet.  Display empty fields.
+	    //No data entered yet.
 	    else 
 	    {
 	    echo "Hgb:<p>";
-	    echo "Current EPO dose:<p>";
-	    echo "New EPO dose:";
+	    echo "Wt:<p>";
+	    echo "Initial weekly EPO dose:";
 	    }
 ?>
 <hr>
